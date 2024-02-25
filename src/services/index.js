@@ -56,7 +56,7 @@ export function completeStep(stepId, type, dispatcher) {
   fetchFromAPI(`/user/step/${stepId}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ complete: type }),
+    body: JSON.stringify({ completed: type }),
   })
     .then((data) => dispatcher(data))
     .catch((error) => toast.error(error.message));

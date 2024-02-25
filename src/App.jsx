@@ -32,16 +32,13 @@ function App() {
     });
   }, [navigate]);
 
-  console.log("user: ", user);
-
   return (
     <Stack
       sx={{
-        overflowY: "auto",
+        overflowY: "hidden",
         overflowX: "hidden",
         alignItems: "center",
-        gap: 6,
-        paddingBottom: 6,
+        height: "98vh",
       }}
     >
       <Header user={user} setUser={setUser} />

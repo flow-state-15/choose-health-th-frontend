@@ -11,13 +11,11 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { fetchAllPlans, postPlanPurchase, fetchUserPlan, fetchUserPurchases } from "../services";
+import { fetchAllPlans, postPlanPurchase } from "../services";
 
 export default function Home({ user }) {
   const navigate = useNavigate();
   const [plans, setPlans] = useState([]);
-  const [, setPurchases] = useState([]);
-  const [userPlan, setUserPlan] = useState(null);
 
   useEffect(() => {
     if (!user) {
@@ -26,15 +24,7 @@ export default function Home({ user }) {
     }
 
     fetchAllPlans(setPlans);
-    // fetchUserPlan(setUserPlan);
-    // fetchUserPurchases(setPurchases);
   }, [user, navigate]);
-
-  // useEffect(() => {
-  //   if (userPlan) {
-  //     fetchUserPurchases(setPurchases);
-  //   }
-  // }, [userPlan]);
 
   useEffect(() => {
     console.log("plans: ", plans);
@@ -42,8 +32,6 @@ export default function Home({ user }) {
 
   const handlePurchase = (planId) => {
     postPlanPurchase(planId, () => {
-      // fetchUserPlan(setUserPlan);
-      // fetchUserPurchases(setPurchases);
       navigate("/dashboard");
     });
   };
@@ -51,7 +39,9 @@ export default function Home({ user }) {
   return (
     <>
       <Stack spacing={3} alignItems="center">
-        <Typography variant="h5" sx={{paddingTop: '2rem'}}>The Plan Store</Typography>
+        <Typography variant="h5" sx={{ paddingTop: "2rem" }}>
+          The Plan Store
+        </Typography>
         <Card>
           <CardContent>
             <Stack justifyContent="center" alignItems="center">
@@ -91,7 +81,7 @@ export default function Home({ user }) {
             </Stack>
           </CardContent>
         </Card>
-        <Button sx={{ textTransform: 'none' }} onClick={() => navigate('/dashboard')}>
+        <Button sx={{ textTransform: "none" }} onClick={() => navigate("/dashboard")}>
           <Typography variant="h6">Go to Your Dashboard</Typography>
         </Button>
       </Stack>

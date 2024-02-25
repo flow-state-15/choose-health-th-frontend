@@ -1,5 +1,4 @@
 import { toast } from "sonner";
-import { API_DOMAIN } from "../constants";
 
 export const history = {
   navigate: null,
@@ -7,10 +6,7 @@ export const history = {
 }
 
 export function fetchFromAPI(segment, options) {
-  // todo: add logout dispatcher on 401s from auth middleware
-  // only use this url when deployed to vercel
-  // return fetch(`https://ch-th-api-6e4fa9aecbd8.herokuapp.com${segment}`, {
-  return fetch(`http://localhost:8000${segment}`, {
+  return fetch(`https://ch-th-api-6e4fa9aecbd8.herokuapp.com${segment}`, {
     credentials: "include",
     ...options
   }).then((res) => {
