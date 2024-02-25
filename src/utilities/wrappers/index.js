@@ -1,4 +1,5 @@
 import { toast } from "sonner";
+import Cookies from "js-cookie";
 
 export const history = {
   navigate: null,
@@ -10,6 +11,7 @@ export function fetchFromAPI(segment, options) {
     credentials: "include",
     headers: {
       "Access-Control-Allow-Credentials": true,
+      "token": Cookies.get("token"),
     },
     ...options
   }).then((res) => {

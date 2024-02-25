@@ -26,10 +26,6 @@ export default function Home({ user }) {
     fetchAllPlans(setPlans);
   }, [user, navigate]);
 
-  useEffect(() => {
-    console.log("plans: ", plans);
-  }, [plans]);
-
   const handlePurchase = (planId) => {
     postPlanPurchase(planId, () => {
       navigate("/dashboard");
